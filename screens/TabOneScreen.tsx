@@ -36,7 +36,7 @@ export default class TabOneScreen extends React.Component {
         <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
         <EditScreenInfo path="/screens/TabOneScreen.tsx" />
         <Text>{this.state.token}</Text> */}
-        <Text>{this.state.token}</Text> 
+        {/* <Text>{this.state.token}</Text>  */}
         {
           this.state.token != '' ? 
           <TouchableButton onPress={this.onPressLogout}>
