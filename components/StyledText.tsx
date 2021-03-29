@@ -71,7 +71,8 @@ export const TouchableButtonStyle = StyleSheet.create({
     backgroundColor: colors.primary,
     borderRadius: spacings.size8,
     paddingHorizontal: spacings.size8,
-    paddingVertical: spacings.size8
+    paddingVertical: spacings.size8,
+    marginRight:10
   },
   layoutNoBg: {
     borderRadius: spacings.size8,

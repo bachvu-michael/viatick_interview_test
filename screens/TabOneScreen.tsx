@@ -24,8 +24,8 @@ export default class TabOneScreen extends React.Component {
   }
   componentDidMount(){
       LocalService.getToken().then((tk)=>{
-          if(tk != ""){
-              this.setState({token:tk})
+          if(tk.data != undefined){
+               this.setState({token:tk.data.access_token})
           }
       })
   }
@@ -43,14 +43,53 @@ export default class TabOneScreen extends React.Component {
             <Label style={[LabelStyle.button, { fontWeight: "bold" }]}>logout</Label>
           </TouchableButton>
           :
-            <TouchableButton onPress={this.onPressLogin}>
+          <TouchableButton onPress={this.onPressLogin}>
             <Label style={[LabelStyle.button, { fontWeight: "bold" }]}>login</Label>
           </TouchableButton>
         }
         {
-          this.state.type == 1 &&
+           this.state.token != '' &&
+           <View style={{display:'flex',flexDirection:'row',marginTop:10,marginBottom:10}}>
+            <TouchableButton  onPress={()=>{this.setState({type:1})}}>
+              <Label style={[LabelStyle.button, { fontWeight: "bold" }]}>Create</Label>
+            </TouchableButton>
+            <TouchableButton onPress={()=>{this.setState({type:2})}}>
+              <Label style={[LabelStyle.button, { fontWeight: "bold" }]}>Read</Label>
+            </TouchableButton>
+            <TouchableButton onPress={()=>{this.setState({type:3})}}>
+              <Label style={[LabelStyle.button, { fontWeight: "bold" }]}>Update</Label>
+            </TouchableButton>
+            <TouchableButton onPress={()=>{this.setState({type:4})}}>
+              <Label style={[LabelStyle.button, { fontWeight: "bold" }]}>Delete</Label>
+            </TouchableButton>
+        </View>
+        }
+        
+        {
+          this.state.token != '' && this.state.type == 1 &&
           <View>
+            <Text>Create</Text>
 
+          </View>
+        }
+        {
+          this.state.token != '' && this.state.type == 2 &&
+          <View>
+            <Text>Read</Text>
+          </View>
+        }
+        {
+          this.state.token != '' && this.state.type == 3 &&
+          <View>
+            <Text>Update</Text>
+            
+          </View>
+        }
+        {
+          this.state.token != '' && this.state.type == 4 &&
+          <View>
+            <Text>Delete</Text>
+            
           </View>
         }
       </View>
